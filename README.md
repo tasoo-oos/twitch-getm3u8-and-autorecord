@@ -3,6 +3,17 @@ This program will give you m3u8 adress of vods or record the stream if adress is
 
 Do not attempt to harm the streamer or use this program for illegal purposes.
 
+### for the people having trouble using this program
+
+download following files
+
+getstreamerinfo.exe
+stream.exe
+streamers.txt
+settings.txt 
+
+and put those in single folder.
+
 ## how to get m3u8 adress with getstreaminfo
 
 To make this program work properly, you must have at least one file called streamers.txt.
