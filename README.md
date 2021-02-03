@@ -1,16 +1,21 @@
 # twitch-getm3u8-and-autorecord
 This program will give you m3u8 adress of vods or record the stream if adress is not available. 
 
-Do not attempt to harm the streamer or use this program for illegal purposes.
+Do not attempt to harm the streamer with this program or use it for illegal purposes.
 
 ### for the people having trouble using this program
 
 download following files
 
+
 getstreamerinfo.exe
+
 stream.exe
+
 streamers.txt
+
 settings.txt 
+
 
 and put those in single folder.
 
