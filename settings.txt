@@ -1,5 +1,5 @@
 best
-C:\Users\tasoo\Videos
+C:\Users\(username)\Videos
 
 
-audio_only, 160p (worst), 360p, 480p, 720p, 720p60, 1080p60 (best)
+available quality options(not always) : audio_only, 160p (worst), 360p, 480p, 720p, 720p60, 1080p60 (best)
