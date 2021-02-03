@@ -10,7 +10,7 @@ You can use the streamers.txt file I uploaded, but if you want to make or modify
 
 1. enter the id of the streamer you want to get the m3u8,
 2. enter colon(:)
-3. Depending on whether you want to auto-record the streamer's broadcast, enter True or False
+3. Depending on whether you want to auto-record the streamer's broadcast, enter True or False ( if there is no True in file, autorecord feature is disabled )
 4. press enter once
 
 However, you must not press enter if you don't have a streamer to write more, or program will crash.
