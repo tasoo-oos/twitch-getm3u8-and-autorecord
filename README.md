@@ -1,6 +1,8 @@
 # twitch-getm3u8-and-autorecord
 This program will give you m3u8 adress of vods or record the stream if adress is not available. 
 
+Do not attempt to harm the streamer or use this program for illegal purposes.
+
 ## how to get m3u8 adress with getstreaminfo
 
 To make this program work properly, you must have at least one file called streamers.txt.
@@ -41,6 +43,8 @@ multi-recording did go well in my case.
 When the program detects that the broadcast is started, the program creates an m3u8 address and uses the requests module to verify that the server has a video file corresponding to the m3u8 address.
 
 if communicaion did not go well ( status code is not 200 ( usually 403 )), record starts
+
+you can manually stop recording 
 
 
 this program has only tested in windows.
