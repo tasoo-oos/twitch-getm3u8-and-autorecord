@@ -35,6 +35,11 @@ However, you must not press enter if you don't have a streamer to write more, or
 
 ![Alt text](https://i.imgur.com/mImLmwh.png)
 
+like this
+
+m3u8 link will be saved in yyyy-mm\(streamerid).txt
+and log.txt will appear to save last stream status and to prevent overlapping m3u8 address in file
+
 you can edit streamers.txt while program is running.
 The program receives a list of streamers from the file and checks each broadcast every 10 minutes.
 
@@ -52,7 +57,7 @@ available quality options(not always) : audio_only, 160p (worst), 360p, 480p, 72
 
 sometimes there are streams which has much narrow video quality settings.
 so i recommend audio_only, worst, best.
-I have not tested about recording quality settings which stream does not supported.
+if stream does not support quality option you want to record, record will be canceled.
 
 multi-recording did go well in my case.
 
