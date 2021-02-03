@@ -33,7 +33,7 @@ also modifying settings.txt during stream.exe or stream.py is running is not rec
 available quality options(not always) : audio_only, 160p (worst), 360p, 480p, 720p, 720p60, 1080p60 (best)
 
 sometimes there are streams which has much narrow video quality settings.
-so i recommend audio_only, worst, best
+so i recommend audio_only, worst, best.
 I have not tested about recording quality settings which stream does not supported.
 
 multi-recording did go well in my case.
