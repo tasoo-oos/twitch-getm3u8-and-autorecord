@@ -165,7 +165,7 @@ def main():
                 prev[i] = []   # 항목 추가
 
         try:
-            time.sleep(1 + now - time.time())  # 프로세스 시작시간을 기준으로 10분후까지 프로그램 멈추기
+            time.sleep(600 + now - time.time())  # 프로세스 시작시간을 기준으로 10분후까지 프로그램 멈추기
         except ValueError:                       # 만약 시간이 너무 오래 걸렸으면
             pass                                 # 넘기고 바로 다시 시작
 
