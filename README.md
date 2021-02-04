@@ -31,11 +31,9 @@ You can use the streamers.txt file I uploaded, but if you want to make or modify
 3. Depending on whether you want to auto-record the streamer's broadcast, enter True or False ( if there is no True in file, autorecord feature is disabled )
 4. press enter once
 
-However, you must not press enter if you don't have a streamer to write more, or program will crash.
+However, you must not press enter like below if you don't have a streamer to write more, or program will crash.
 
 ![Alt text](https://i.imgur.com/mImLmwh.png)
-
-like this
 
 m3u8 link will be saved in yyyy-mm\(streamerid).txt
 and log.txt will appear to save last stream status and to prevent overlapping m3u8 address in file
@@ -56,8 +54,7 @@ also modifying settings.txt during stream.exe or stream.py is running is not rec
 available quality options(not always) : audio_only, 160p (worst), 360p, 480p, 720p, 720p60, 1080p60 (best)
 
 sometimes there are streams which has much narrow video quality settings.
-so i recommend audio_only, worst, best.
-if stream does not support quality option you want to record, record will be canceled.
+if stream does not support quality option you want to record, stream will be recorded with best quality.
 
 multi-recording did go well in my case.
 

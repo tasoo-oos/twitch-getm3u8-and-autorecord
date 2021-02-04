@@ -26,9 +26,8 @@ def check_vod_id(username):
 
         else:  # 방송중이 아니면
             info = []  # 정보없음
-    # except requests.exceptions.RequestException as e:
-    except (KeyboardInterrupt, SystemExit):
-        raise
+    except (KeyboardInterrupt, SystemExit):  # 키보드나 시스템이 프로그램 작동을 막으면
+        raise                                # 튕김
 
     return info
 
@@ -144,7 +143,7 @@ def main():
                 url = makem3u8(info)      # m3u8 링크 제작
                 tofile(info, url)         # 파일에 저장
 
-                response = requests.get(url)  # 만들어진 주소를 기반으로 서버와 통신
+                response = requests.get(url, timeout=10)  # 만들어진 주소를 기반으로 서버와 통신
                 print(response.status_code)
                 if response.status_code != 200:  # 통신이 정상적이지 않았으면
                     tofile(info, '이 m3u8 주소는 작동하지 않을 수 있습니다. 오류코드 : ' + str(response.status_code))  # 파일 입력
@@ -166,7 +165,7 @@ def main():
                 prev[i] = []   # 항목 추가
 
         try:
-            time.sleep(600 + now - time.time())  # 프로세스 시작시간을 기준으로 10분후까지 프로그램 멈추기
+            time.sleep(1 + now - time.time())  # 프로세스 시작시간을 기준으로 10분후까지 프로그램 멈추기
         except ValueError:                       # 만약 시간이 너무 오래 걸렸으면
             pass                                 # 넘기고 바로 다시 시작
 

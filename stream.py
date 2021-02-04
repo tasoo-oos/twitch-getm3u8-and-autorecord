@@ -24,7 +24,6 @@ class TwitchRecorder:
         self.quality = "480p"
 
     def run(self):
-        # create directory for recordedPath and processedPath if not exist
         if (os.path.isdir(self.processed_path) is False):  # 만약 설정한 디렉토리가 없으면
             os.makedirs(self.processed_path)               # 만들기
 
@@ -39,9 +38,17 @@ class TwitchRecorder:
         recorded_filename = os.path.join(self.processed_path, filename)  # C:\ 등으로 시작하는 절대주소 생성
 
         # 스팀링크(녹화) 시작
+
+        print(recorded_filename)
+
         subprocess.call(
             ["streamlink", "--twitch-disable-hosting", "--twitch-disable-ads", "twitch.tv/" + self.username,
              self.quality, "-o", recorded_filename])
+
+        if os.path.isfile(recorded_filename) is False:
+            subprocess.call(
+                ["streamlink", "--twitch-disable-hosting", "--twitch-disable-ads", "twitch.tv/" + self.username,
+                 'best', "-o", recorded_filename])
 
         print("Recording stream is done.")
 
@@ -55,6 +62,13 @@ def main():
     with open("record.txt", 'rt') as f:
         twitch_recorder.username = f.readline()
     # 여러 정보 파일로부터 입력받음
+
+    if twitch_recorder.quality[-1] == '\n':
+        twitch_recorder.quality = twitch_recorder.quality[:-1]
+    if twitch_recorder.processed_path[-1] == '\n':
+        twitch_recorder.processed_path = twitch_recorder.processed_path[:-1]
+    if twitch_recorder.username[-1] == '\n':
+        twitch_recorder.username = twitch_recorder.username[:-1]
 
     print(twitch_recorder.quality)
     print(twitch_recorder.processed_path)
