@@ -7,14 +7,9 @@
 
 # pyinstaller --onefile stream.py
 
-import requests
 import os
-import time
-import json
-import sys
 import subprocess
 import datetime
-import getopt
 
 
 class TwitchRecorder:
@@ -23,64 +18,51 @@ class TwitchRecorder:
         self.client_id = "jzkbprff40iqj646a697cyrvl0zt2m6"  # don't change this
 
         self.ffmpeg_path = 'ffmpeg'
-        self.refresh = 1.0  # don't go too low like 0.5 sec! In fact 1.0 might still cause some troubles
-        self.root_path = "C:\\Users\\tasoo\\PycharmProjects\\study"
+        self.processed_path = "C:\\Users\\tasoo\\PycharmProjects\\study"
 
         # user configuration
-        self.username = "danz_59"
-        self.quality = "best"
+        self.username = "chick_0318"
+        self.quality = "480p"
 
     def run(self):
-        # path to finished video, errors removed
-        self.processed_path = self.root_path
-
         # create directory for recordedPath and processedPath if not exist
-        if (os.path.isdir(self.processed_path) is False):
-            os.makedirs(self.processed_path)
+        if (os.path.isdir(self.processed_path) is False):  # 만약 설정한 디렉토리가 없으면
+            os.makedirs(self.processed_path)               # 만들기
 
-        print("Checking for", self.username, "every", self.refresh, "seconds. Record with", self.quality, "quality.")
         self.loopcheck()
 
-
     def loopcheck(self):
-        # while True:
-        # status, info = self.check_user()
-        #            if status == 2:
-        #                print("Username not found or server error")
-        #                time.sleep(self.refresh)
-        # if status == 1:
-        #     print(self.username, "is currently offline, checking again in", self.refresh, "seconds.")
-        #     time.sleep(self.refresh)
-        # else:  # even if the API query is errored (condition code 2), the recording must continue
-        print(self.username, "online. Stream recording in session.")
-        filename = self.username + " - " + datetime.datetime.now().strftime("%Y-%m-%d %Hh%Mm%Ss") + ".mp4"
+        filename = self.username + " - " + datetime.datetime.now().strftime("%Y-%m-%d %Hh%Mm%Ss") + ".mp4"  # 파일이름 생성
 
-        # clean filename from unecessary characters
+        # 불필요한 문자 제거
         filename = "".join(x for x in filename if x.isalnum() or x in [" ", "-", "_", "."])
 
-        recorded_filename = os.path.join(self.processed_path, filename)
+        recorded_filename = os.path.join(self.processed_path, filename)  # C:\ 등으로 시작하는 절대주소 생성
 
-        # start streamlink process
+        # 스팀링크(녹화) 시작
         subprocess.call(
             ["streamlink", "--twitch-disable-hosting", "--twitch-disable-ads", "twitch.tv/" + self.username,
              self.quality, "-o", recorded_filename])
 
-        print("Recording stream is done. Going back to checking..")
+        print("Recording stream is done.")
 
 
-def main(argv):
+def main():
     twitch_recorder = TwitchRecorder()
 
     with open("settings.txt", 'rt') as f:
         twitch_recorder.quality = f.readline()
-        twitch_recorder.root_path = f.readline()
+        twitch_recorder.processed_path = f.readline()
     with open("record.txt", 'rt') as f:
         twitch_recorder.username = f.readline()
+    # 여러 정보 파일로부터 입력받음
 
-    print(twitch_recorder.quality, twitch_recorder.root_path, twitch_recorder.username)
+    print(twitch_recorder.quality)
+    print(twitch_recorder.processed_path)
+    print(twitch_recorder.username)
 
     twitch_recorder.run()
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()
