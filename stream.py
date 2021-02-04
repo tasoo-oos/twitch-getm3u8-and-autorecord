@@ -6,6 +6,7 @@
 # Please get the newest version using methods described in https://streamlink.github.io/install.html
 
 # pyinstaller --onefile stream.py
+# pyinstaller --onefile --noconsole stream.py
 
 import os
 import subprocess
