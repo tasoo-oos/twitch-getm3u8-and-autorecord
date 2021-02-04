@@ -5,7 +5,6 @@ import time
 import os
 import requests
 import ast
-import subprocess
 
 # pyinstaller --onefile getstreaminfo.py
 # pyinstaller --onefile --noconole getstreaminfo.py
@@ -126,6 +125,10 @@ def main():
             prev[i] = []
         filedate(datetime.date.isoformat(datetime.date.today()), streamer)
         prev['time'] = datetime.date.isoformat(datetime.date.today())
+    else:
+        for i in streamer:
+            if i not in prev:
+                prev[i] = []
 
     while True:
         now = time.time()
@@ -146,7 +149,6 @@ def main():
 
                 response = requests.get(url)
                 print(response.status_code)
-                print(response.reason)
                 if response.status_code != 200 and record[i]:
                     with open('record.txt', 'wt') as f:
                         f.write(i)
@@ -163,6 +165,10 @@ def main():
         t.close()
 
         streamer, record = getstream()
+
+        for i in streamer:
+            if i not in prev:
+                prev[i] = []
 
         try:
             time.sleep(600 + now - time.time())
