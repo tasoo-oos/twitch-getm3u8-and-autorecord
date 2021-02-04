@@ -147,7 +147,7 @@ def main():
                 response = requests.get(url)  # 만들어진 주소를 기반으로 서버와 통신
                 print(response.status_code)
                 if response.status_code != 200:  # 통신이 정상적이지 않았으면
-                    tofile(i, '이 m3u8 주소는 작동하지 않을 수 있습니다. 오류코드 : ' + str(response.status_code))  # 파일 입력
+                    tofile(info, '이 m3u8 주소는 작동하지 않을 수 있습니다. 오류코드 : ' + str(response.status_code))  # 파일 입력
                     if record[i]:                # 사용자가 녹화를 허용했으면
                         with open('record.txt', 'wt') as f:
                             f.write(i)  # stream.exe 에 전해주기 위해 녹화할 스트리머 이름 파일에 쓰기
