@@ -1,8 +1,6 @@
 # This code is based on tutorial by slicktechies modified as needed to use oauth token from Twitch.
 # You can read more details at: https://www.junian.net/2017/01/how-to-record-twitch-streams.html
 # original code is from https://slicktechies.com/how-to-watchrecord-twitch-streams-using-livestreamer/
-
-# Only works for Streamlink version >= 1.3.0
 # Please get the newest version using methods described in https://streamlink.github.io/install.html
 
 # pyinstaller --onefile stream.py
