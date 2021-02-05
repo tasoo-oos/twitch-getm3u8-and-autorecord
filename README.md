@@ -39,7 +39,7 @@ m3u8 link will be saved in yyyy-mm\(streamerid).txt
 and log.txt will appear to save last stream status and to prevent overlapping m3u8 address in file
 
 you can edit streamers.txt while program is running.
-The program receives a list of streamers from the file and checks each broadcast every 10 minutes.
+The program receives a list of streamers from the file and checks each broadcast every 5 minutes.
 
 ## how to automatically record streams with stream
 

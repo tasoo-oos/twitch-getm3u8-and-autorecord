@@ -146,8 +146,9 @@ def main():
                 response = requests.get(url, timeout=10)  # 만들어진 주소를 기반으로 서버와 통신
                 print(response.status_code)
                 if response.status_code != 200:  # 통신이 정상적이지 않았으면
+                    response = requests.get(url, timeout=10)  # 만들어진 주소를 기반으로 서버와 통신
                     tofile(info, '이 m3u8 주소는 작동하지 않을 수 있습니다. 오류코드 : ' + str(response.status_code))  # 파일 입력
-                    if record[i]:                # 사용자가 녹화를 허용했으면
+                    if record[i] and response.status_code != 200:  # 사용자가 녹화를 허용했고 다시 통신했을때 통신이 정상적이지 않았으면
                         with open('record.txt', 'wt') as f:
                             f.write(i)  # stream.exe 에 전해주기 위해 녹화할 스트리머 이름 파일에 쓰기
                         os.startfile('stream.exe')  # stream.exe 실행
@@ -165,7 +166,7 @@ def main():
                 prev[i] = []   # 항목 추가
 
         try:
-            time.sleep(600 + now - time.time())  # 프로세스 시작시간을 기준으로 10분후까지 프로그램 멈추기
+            time.sleep(300 + now - time.time())  # 프로세스 시작시간을 기준으로 5분후까지 프로그램 멈추기
         except ValueError:                       # 만약 시간이 너무 오래 걸렸으면
             pass                                 # 넘기고 바로 다시 시작
 
