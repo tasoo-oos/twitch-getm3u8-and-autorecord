@@ -135,7 +135,7 @@ def main():
             filedate(datetime.date.isoformat(datetime.date.today()), streamer)  # 모든 파일에 날짜 입력
 
         for i in streamer:  # 각 항목당 한번씩 이하 작업 수행
-            print(i, end=' : ')
+            print('{:<25}'.format(i), end=' : ')
             info = check_vod_id(i)  # m3u8 제작에 필요한 정보 받아오기
             print(info)
             if info != prev[i] and info:  # 스트리머가 방송을 켰으면 (만약 이전 탐색 결과와 현재 참색 결과가 다르고 현재 탐색 결과에 뭐가 있으면)
@@ -146,9 +146,7 @@ def main():
                 response = requests.get(url, timeout=10)  # 만들어진 주소를 기반으로 서버와 통신
                 print(response.status_code)
                 if response.status_code != 200:  # 통신이 정상적이지 않았으면
-                    response = requests.get(url, timeout=10)  # 만들어진 주소를 기반으로 서버와 통신
-                    tofile(info, '이 m3u8 주소는 작동하지 않을 수 있습니다. 오류코드 : ' + str(response.status_code))  # 파일 입력
-                    if record[i] and response.status_code != 200:  # 사용자가 녹화를 허용했고 다시 통신했을때 통신이 정상적이지 않았으면
+                    if record[i]:  # 사용자가 녹화를 허용했으면
                         with open('record.txt', 'wt') as f:
                             f.write(i)  # stream.exe 에 전해주기 위해 녹화할 스트리머 이름 파일에 쓰기
                         os.startfile('stream.exe')  # stream.exe 실행
@@ -169,6 +167,8 @@ def main():
             time.sleep(300 + now - time.time())  # 프로세스 시작시간을 기준으로 5분후까지 프로그램 멈추기
         except ValueError:                       # 만약 시간이 너무 오래 걸렸으면
             pass                                 # 넘기고 바로 다시 시작
+
+        tofile(info, '이 m3u8 주소는 작동하지 않을 수 있습니다. 오류코드 : ' + str(response.status_code))  # 파일 입력
 
 
 if __name__ == "__main__":
