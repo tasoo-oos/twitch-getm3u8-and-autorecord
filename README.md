@@ -35,7 +35,7 @@ However, you must not press enter like below if you don't have a streamer to wri
 
 ![Alt text](https://i.imgur.com/mImLmwh.png)
 
-m3u8 link will be saved in yyyy-mm\(streamerid).txt
+m3u8 link will be saved in yyyy-mm \ streamerid.txt
 and log.txt will appear to save last stream status and to prevent overlapping m3u8 address in file
 
 you can edit streamers.txt while program is running.
